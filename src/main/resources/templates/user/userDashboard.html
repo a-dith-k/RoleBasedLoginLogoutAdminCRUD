@@ -6,13 +6,10 @@
 </head>
 <body>
 <section id="userbody" class="d-flex justify-content-center align-items-center">
-    <div class="text-center">
-        <h1>SpringBoot</h1>
-        <p class="p-5 pt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta distinctio dolorem ea explicabo fuga illo
-            ipsa, iusto laboriosam maiores molestiae officia perferendis perspiciatis placeat quas quidem recusandae
-            rerum vel voluptate!</p>
-        <button class="btn bg-primary btn-lg text-white">Get Started</button>
-    </div>
+    <form class="d-flex"  th:action="@{/logout}" method="post">
+        <button class="btn btn-outline-success" type="submit">Logout</button>
+    </form>
+
 </section>
 </body>
 </html>

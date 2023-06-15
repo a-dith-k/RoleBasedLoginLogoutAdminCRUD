@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::#userbody})">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>home</title>
 </head>
 <body>
-
+<section id="userbody" class="d-flex justify-content-center align-items-center">
+    <form class="d-flex"  th:action="@{/logout}" method="post">
+        <button class="btn btn-outline-success" type="submit">Logout</button>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PASSWORD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>

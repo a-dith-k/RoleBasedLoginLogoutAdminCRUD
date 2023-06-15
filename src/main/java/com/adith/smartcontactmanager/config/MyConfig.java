@@ -34,7 +34,7 @@ public class MyConfig {
                         .loginPage("/login").successHandler(successHandler)
                         .permitAll()
                 )
-                        .logout(Customizer.withDefaults());
+                .logout((logout) -> logout.permitAll().logoutSuccessUrl("/login"));
 //                .logout((logout) -> logout.logoutUrl("/logout").permitAll().logoutSuccessUrl("/"));
 
         return http.build();
