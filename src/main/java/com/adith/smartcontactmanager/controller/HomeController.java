@@ -3,6 +3,7 @@ package com.adith.smartcontactmanager.controller;
 import com.adith.smartcontactmanager.entities.User;
 import com.adith.smartcontactmanager.helper.Message;
 import com.adith.smartcontactmanager.repository.UserRepository;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,20 @@ public class HomeController {
                 throw new Exception("You have not agreed the terms and conditions");
             }
 
+            User existingUser=userRepository.findUserByEmail(user.getEmail());
+            //<------------------------------------------------------------------------------------------
+            if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+                bindingResult.rejectValue("email", null,
+                        "There is already an account registered with the same email");
+
+                httpSession.setAttribute("message",new Message("Email Already Exists","alert-danger"));
+                model.addAttribute("user",user);
+                return "signup";
+            }
+
+
+            //<----------------------------------------------------------------------------------------
+
             if(bindingResult.hasErrors()){
                 System.out.println("error"+bindingResult.toString());
                 model.addAttribute("user",user);
@@ -62,7 +77,7 @@ public class HomeController {
             user.setEnabled(true);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-            User result = userRepository.save(user);
+                User result = userRepository.save(user);
 
             model.addAttribute("user",new User());
 
@@ -73,8 +88,10 @@ public class HomeController {
             e.printStackTrace();
             model.addAttribute("user", user);
             httpSession.setAttribute("message",new Message("Something went Wrong"+e.getMessage(),"alert-danger"));
+
             return "signup";
         }
+
 
     }
 
@@ -84,6 +101,18 @@ public class HomeController {
         return "signIn";
     }
 
+//    @PostMapping("/logout")
+//    public String performLogout() {
+//
+//        return "redirect:/login";
+//    }
+//
+//    @GetMapping("/logout")
+//    public String logout() {
+//
+//        return "redirect:/login?logout";
+//    }
+//
 
 
 

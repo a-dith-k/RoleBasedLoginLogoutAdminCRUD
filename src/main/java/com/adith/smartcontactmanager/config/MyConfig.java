@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -34,7 +35,12 @@ public class MyConfig {
                         .loginPage("/login").successHandler(successHandler)
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll().logoutSuccessUrl("/login"));
+                .logout(logout-> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+                .logoutSuccessUrl("/login?logout"));
+//                    . deleteCookies("JSESSIONID")
+//                     .invalidateHttpSession(true));
+//                .logout(Customizer.withDefaults());
+//                .logout((logout) -> logout.logoutSuccessUrl("/login").permitAll());
 //                .logout((logout) -> logout.logoutUrl("/logout").permitAll().logoutSuccessUrl("/"));
 
         return http.build();

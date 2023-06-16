@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::#userbody})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::#userdashboard})">
 <head>
     <meta charset="UTF-8">
     <title>home</title>
 </head>
 <body>
-<section id="userbody" class="d-flex justify-content-center align-items-center">
-    <form class="d-flex"  th:action="@{/logout}" method="post">
-        <button class="btn btn-outline-success" type="submit">Logout</button>
-    </form>
+<section id="userdashboard" class="d-flex justify-content-center align-items-center mt-5">
+    <div class="text-center">
+        <h1>Its Your DashBoard</h1>
+        <h1> You Are: <span th:text="${user.userName}"></span></h1>
+        <h1> Your Email Id: <span th:text="${user.email}"></span></h1>
 
+
+        <h1 ></h1>
+    </div>
 </section>
 </body>
 </html>

@@ -4,8 +4,10 @@ import com.adith.smartcontactmanager.entities.User;
 import com.adith.smartcontactmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -20,7 +22,11 @@ public class AdminController {
 //        return list;
 //    }
     @GetMapping("/dashboard")
-    public String adminPanel(){
+    public String adminPanel(Model model, Principal principal){
+
+        String username=principal.getName();
+        User user=userRepository.findUserByEmail(username);
+        model.addAttribute("user",user);
         return "admin/adminPanel";
     }
 

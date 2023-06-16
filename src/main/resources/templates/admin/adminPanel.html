@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::#userbody})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::#userdashboard})">
 <head>
     <meta charset="UTF-8">
     <title>home</title>
 </head>
 <body>
-<section id="userbody" class="d-flex justify-content-center align-items-center">
-    <form class="d-flex"  th:action="@{/logout}" method="post">
-        <button class="btn btn-outline-success" type="submit">Logout</button>
-    </form>
+<section id="userdashboard" class="d-flex justify-content-center align-items-center mt-5">
+
     <table class="table">
         <thead>
         <tr>
