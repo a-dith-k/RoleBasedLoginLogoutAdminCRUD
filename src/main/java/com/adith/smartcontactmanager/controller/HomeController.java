@@ -3,18 +3,17 @@ package com.adith.smartcontactmanager.controller;
 import com.adith.smartcontactmanager.entities.User;
 import com.adith.smartcontactmanager.helper.Message;
 import com.adith.smartcontactmanager.repository.UserRepository;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -31,13 +30,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("title", "Home-Smart Contact Manager");
+        model.addAttribute("title", "Home-First Boot Application");
         return "home";
     }
 
     @GetMapping("/signup")
     public String signup(Model model) {
-        model.addAttribute("title", "SignUp-Smart Contact Manager");
+        model.addAttribute("title", "SignUp-First Boot Application");
         model.addAttribute("user", new User());
         return "signup";
     }
