@@ -21,3 +21,14 @@ body {
     padding: 20px;
     background: aliceblue;
 }
+
+.search-container{
+    position:relative;
+
+}
+
+.search-result{
+    position:absolute;
+    padding: 10px;
+    display: none   ;
+}

@@ -6,33 +6,66 @@
 </head>
 <body>
 <section id="adminDashboard" class="d-flex justify-content-center align-items-center mt-5">
-    <a th:href="@{/admin/addUser}"><button class="btn btn-primary">ADD USER</button></a>
-    <a th:href="@{/admin/updateUser}"><button class="btn btn-primary">UPDATE USER</button></a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Enabled</th>
-            <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="e: ${users}">
-            <th scope="row" th:text="${e.id}"></th>
-            <td th:text="${e.userName}"></td>
-            <td th:text="${e.email}"></td>
-            <td th:text="${e.role}"></td>
-            <td th:text="${e.enabled}"></td>
-            <td> <a th:href="@{'/admin/updateUser/'+${e.id}}" class="btn btn-primary">Update</a>
-                <a th:href="@{'/admin/deleteUser/'+${e.id}}" class="btn btn-danger">Delete</a></td>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+                <div class="h1 text-center border">USERS</div>
+                <div class="search-container my-2">
+                    <input type="text" class="form-control" id="search-input" onkeyup="search()" placeholder="search your user">
+                    <div class="search-result bg-white">
 
-        </tr>
+                    </div>
 
-        </tbody>
-    </table>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Enabled</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="e: ${users}">
+                        <th scope="row" th:text="${e.id}"></th>
+                        <td th:text="${e.userName}"></td>
+                        <td th:text="${e.email}"></td>
+                        <td th:text="${e.role}"></td>
+                        <td th:text="${e.enabled}"></td>
+                        <td> <a th:href="@{'/admin/updateUser/'+${e.id}}" class="btn btn-primary">Update</a>
+                            <a th:href="@{'/admin/deleteUser/'+${e.id}}" class="btn btn-danger">Delete</a></td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+                <!----------------------  pagination------------------------>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+                <!---------------------------------------------------------------------------------------->
+                <div>
+                    <a th:href="@{/admin/addUser}"><button class="btn btn-primary">ADD USER</button></a>
+                    <a th:href="@{/admin/updateUser}"><button class="btn btn-primary">UPDATE USER</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 </section>
 </body>
 </html>

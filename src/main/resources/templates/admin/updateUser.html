@@ -12,11 +12,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-4">
+                <div class="h2 text-center border">Update User</div>
 
-                <div class="container center_div">
-                    <form id="add-user" class="form-inline"  th:action="@{/admin/updateUserPUT}" th:object="${user}" method="post">
+                <div class="container center_div text-center border">
+                    <form id="add-user" class="form-inline "  th:action="@{/admin/updateUserPUT}" th:object="${user}" method="post">
 
-                        <label class="sr-only" for="name"></label>
+                        <label class="" for="name"></label>
                         <input
                                 name="userName"
                                 type="text"
@@ -25,7 +26,7 @@
                                 placeholder="Full Name">
 
 
-                        <label class="sr-only" for="email"></label>
+                        <label class="" for="email"></label>
 
                         <input
                                 name="email"
@@ -35,7 +36,7 @@
                                 placeholder="Username">
 
 
-                        <label class="sr-only" for="password"></label>
+                        <label class="" for="password"></label>
                         <input
                                 name="password"
                                 type="text"
@@ -43,7 +44,7 @@
                                 id="password"
                                 placeholder="Password">
 
-                        <label class="sr-only" for="role"></label>
+                        <label class="" for="role"></label>
                         <input
                                 name="role"
                                 type="text"
@@ -51,7 +52,7 @@
                                 id="role"
                                 placeholder="role">
 
-                        <button type="submit" class="btn btn-primary btn-space">Add User</button>
+                        <button type="submit" class="btn btn-primary btn-space mt-2">Update </button>
                     </form>
 
                 </div>

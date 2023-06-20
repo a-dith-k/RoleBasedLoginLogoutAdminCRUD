@@ -12,11 +12,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-4">
+                <div class="h2 text-center border">Add User</div>
 
-                <div class="container center_div">
-                    <form id="add-user" class="form-inline" th:action="@{/admin/adduserPOST}" th:object="${user}" method="post">
+                <div class="container center_div border">
+                    <form id="update-user" class="form-inline text-center" th:action="@{/admin/adduserPOST}" th:object="${user}" method="post">
 
-                        <label class="sr-only" for="name"></label>
+                        <label class="" for="name"></label>
                         <input
                                 name="userName"
                                 type="text"
@@ -51,7 +52,7 @@
                                 id="role"
                                 placeholder="role">
 
-                        <button type="submit" class="btn btn-primary btn-space">Add User</button>
+                        <button type="submit" class="btn btn-primary btn-space m-1">Add User</button>
                     </form>
 
                 </div>

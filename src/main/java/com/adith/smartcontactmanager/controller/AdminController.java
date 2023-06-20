@@ -7,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.List;
 
@@ -49,7 +48,6 @@ public class AdminController {
 
         return "admin/addUser";
     }
-
     @PostMapping("/adduserPOST")
     public String adduserPOST(@ModelAttribute("user") User user,Model model){
 
@@ -108,7 +106,9 @@ public class AdminController {
 
         user.setId(id);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        System.out.println("hello");
         System.out.println(userRepository.save(user));
+        System.out.println("hello");
 
         model.addAttribute("admin",new User());
         model.addAttribute("user",new User());
@@ -131,6 +131,26 @@ public class AdminController {
         model.addAttribute("user",new User());
 
         return "redirect:/admin/dashboard";
+    }
+
+    //---------------------------------------------------------------
+    //to display single user
+    @GetMapping("/single/{id}")
+    public String getOneUser(Model model, @PathVariable("id") Integer id){
+
+        User user=userRepository.findUserById(id);
+
+        model.addAttribute("admin",new User());
+        model.addAttribute("user",user);
+
+        return "admin/userProfile";
+    }
+
+    @GetMapping("admin/dashboard/update/")
+    public String updateOne(){
+
+        return "he";
+
     }
 
 

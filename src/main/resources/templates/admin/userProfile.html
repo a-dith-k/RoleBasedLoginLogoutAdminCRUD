@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::#adduser})">
+<head>
+  <meta charset="UTF-8">
+  <title>home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+</head>
+<body>
+<!--------------------------------------------------------content----------------------------------------------->
+<section id="adduser" class="d-flex justify-content-center align-items-center mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-4">
+        <div class="h3 text-center border" th:text="${user.userName}"></div>
+
+        <ul class="list-group" th:each="e: ${user}">
+        <li class="list-group-item">Username:<span  th:text="${e.userName}"></span></li>
+          <li class="list-group-item" >Id: &nbsp <span th:text="${e.id}"></span></li>
+          <li class="list-group-item" >Email: &nbsp <span th:text="${e.email}"></span></li>
+          <li class="list-group-item" >Role: &nbsp<span th:text="${e.role}"></span></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+</body>
